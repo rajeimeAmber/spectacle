@@ -1,0 +1,378 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    
+}
+
+html{
+    scroll-padding-top: 90px;
+}
+
+body{
+    font-family: 'Questrial', sans-serif;
+    
+}
+header{
+    background-image: url(images/background.png);
+    height: 75vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    position: relative;
+}
+/* header navigation design */
+header nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* margin-top: 20px; */
+    width: 100%;
+    transition:0.8s;
+    z-index:2;
+    position: fixed;
+    padding: 6px;
+}
+
+/* all unordered list within header section */
+header nav ul{
+    list-style: none;
+    display: flex;
+}
+
+/* all ancher tags within header section */
+header nav ul li a{
+    text-decoration: none;
+    color: rgb(62, 181,196 );
+    text-transform: uppercase;
+    margin: 20px;
+    line-height: 1.6
+}
+
+header nav ul li a:hover{
+    color: rgb(59, 59, 59);
+}
+
+/* header banner welcome quote */
+header .welcome{
+    position: absolute;
+    bottom: 10em;
+    left: 10em;
+} 
+
+/* first line of quote within banner */
+header .welcome .first{
+    color: rgb(33, 33, 33);
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* second line of quote within banner */
+header .welcome .second{
+    font-size:34px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: rgb(62, 181,196 );
+}
+
+/* button within banner */
+header .welcome button{
+    color: white;
+    background-color:rgb(62, 181,196 );
+    border: none;
+    padding:12px 25px ;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+/* heading within each sections  */
+.heading {
+    text-align: center;
+    color: rgb(62, 181,196 );
+    font-weight: 100;
+    font-size: 34px;
+    letter-spacing: 2px;
+}
+
+/* products that are available for sale */
+#products .ourProducts{
+   display: grid;
+   grid-template-columns: repeat(3,1fr);
+   list-style: none;
+   /* grid-gap: 2px; */
+   margin: 0 50px;
+}
+
+/* images of products container */
+.ourProducts .photo{
+    width: 389px;
+    height: 219px;
+    
+}
+
+/* images of products */
+.ourProducts img{
+    height: 100%;
+    width: 100%;
+}
+
+
+/* hover on product images */
+/* .ourProducts .photo:hover{
+
+ 
+} */
+
+.ourProducts .eyeglass:hover{
+    transform: scale(1.1);
+    box-shadow:  0 4px 8px 0px  rgba(0, 0, 0, 0.096);
+    transition: 0.5s;
+}
+
+/* name and model of products */
+.ourProducts p{
+    color: #777;
+    font-size: 15px;
+    text-align: center;
+    margin: 6px;
+}
+
+/* product ratings  */
+.ourProducts .rating{
+    height: 17.5px;
+    width: 87.5px;
+    margin: 0 auto;
+}
+
+.ourProducts .rating img{
+    width: 100%;
+    height: 100%;
+}
+
+/* price of products available */
+.ourProducts span p{
+    /* font-weight: 400; */
+    font-size: 18px;
+    color: #444;
+    text-align: center;
+}
+
+/* about us section design */
+.aboutUs{
+    margin-top: 80px;
+}
+
+.aboutUs .about{
+    display: flex;
+}
+
+.aboutUs p{
+    font-size: 18px;
+}
+
+
+
+/* contact us section */
+
+/* information section within contact section */
+#contactUs{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin: 0 6em;
+    align-items: center; 
+}
+
+
+#contactUs .head{
+    grid-column: 1/3;
+
+}
+
+/* contact us area design */
+#contactUs .ourInfo{
+    grid-column: 1/2;
+}
+
+#contactUs .yourInfo{
+    grid-column: 2/3;
+}
+
+.yourInfo input, textarea{
+    border-color: #ccc;
+    font-size: 14px;
+    height: 45px;
+    border-radius: 8px;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    width: 100%;
+}
+
+.yourInfo textarea::placeholder , .yourInfo input::placeholder{
+    text-transform: uppercase;
+    color: #ccc;
+    font-family: inherit;
+    
+}
+
+.yourInfo .submit{
+    font-size: 16px;
+    padding: 12px 25px;
+    background-color: rgb(62, 181,196 );
+    color: #fff;
+    border-radius: 30px;
+    border: none;
+    font-weight: 400;
+    cursor: pointer;
+    margin: 0 auto;
+    width: 30%;
+}
+
+
+
+
+/* modal design */
+.modal{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: rgba(51, 51, 51, 0.726);
+    z-index: 20;
+    padding-top: 100px;
+    /* overflow: auto; */
+    display: none;
+}   
+
+.modal .modal-content{
+    background-color: white;
+    height: 85%;
+    width: 300px;
+    margin: 0 auto;
+    animation-name: animatetop;
+    animation-duration: 0.6s;
+    position: relative;
+    border-radius: 10px;
+   
+}
+
+.modal .modal-content #close{
+    position: absolute;
+    top:0;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: rgb(83, 83, 83);
+}
+
+.modal .modal-content p{
+    text-align: center;
+}
+.modal .modal-content .top{
+    color: #333;
+    font-size: 18px;
+    padding-top:12px ;
+}
+
+.modal .modal-content .writeUs{
+    color: #999
+}
+
+.modal .modal-content label,p{
+    margin: 8px;
+}
+
+.modal .modal-content input{
+    margin: 8px 8px 0px 8px;
+}
+
+.modal .modal-content input,textarea{
+    width: 93%;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid #d6d6d6;
+    padding-left: 10px;
+}
+
+.modal .modal-content textarea{
+    width: 93%;
+    height:60px ;
+    border-radius: 8px;
+    border: 1px solid #d6d6d6;
+}
+
+.modal .modal-content input:focus, .modal-content textarea:focus{
+    outline: none;
+}
+
+.modal .modal-content span{
+    color: #e94941;
+    font-size: 12px;
+    position: absolute;
+    left:20px;
+    bottom: -6px;
+}
+
+.modal .modal-content input.ng-invalid ,.modal .modal-content textarea.ng-invalid{
+    border-color: #e94941;
+}
+
+
+.modal .modal-content  input[type="submit"]{
+    color: #fff;
+    outline-color: transparent;
+    border-radius: 20px;
+    border: none;
+    background-color:  rgb(62, 181,196 );
+}
+
+.modal .modal-content div{
+    position: relative;
+    padding: 12px;
+    margin: 8px;
+    
+}
+
+
+
+
+/* animation for modal to make it slide down */
+@keyframes animatetop {
+    from {
+      top: -300px;
+      opacity: 0;
+    }
+    to {
+      top: 0;
+      opacity: 1;
+    }
+  }
+
+
+
+
+
+
+/* back to top icon design */
+.toTop{
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 136px;
+    right: 16px;
+    cursor: pointer;
+    z-index: 10;
+    background-color: rgb(62, 181,196 );
+    display: none;
+}   
+
+.toTop i{
+    font-size: 24px;
+    color: #fff;
+}
