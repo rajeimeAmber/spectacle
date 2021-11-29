@@ -1,7 +1,7 @@
 let app = angular.module('myApp',[]);
 
 
-app.controller('myCtrl',['$scope',($scope)=>{
+app.controller('productsCtrl',['$scope',($scope)=>{
 
 $scope.products = [
     {
@@ -11,7 +11,6 @@ $scope.products = [
         image: "images/products/E1399A1A152.jpg",
         rating:"images/star-rating/five.png"
     },
-
     {
         name:"Black Rectangle Semi-Rimmed Eyeglasses",
         model: "TW1128MHM1|52",
@@ -26,9 +25,6 @@ $scope.products = [
         image: "images/products/EW1017WRM150.jpg",
         rating:"images/star-rating/four.png"
     },
-    
-    
-    
     {
         name:"Silver Rectangle Semi-Rimmed Eyeglasses",
         model: "TW1119MHM1|51",
@@ -36,7 +32,6 @@ $scope.products = [
         image: "images/products/TW1119MHM151.jpg",
         rating:"images/star-rating/zero.png"
     },
-
     {
         name:"Gold Rectangle Semi-Rimmed Eyeglasses",
         model: "TW1091WHM1|49",
@@ -50,20 +45,35 @@ $scope.products = [
         price: 1144 ,
         image: "images/products/FT1076WFC653.jpg",
         rating:"images/star-rating/three.png"
-    },
-
-
-    // {
-    //     name:"Purple Rectangle Rimless Eyeglasses",
-    //     model: "TW1085WRM2|51",
-    //     price: 695,
-    //     image: "images/products/TW1085WRM251.jpg",
-    //     rating:"images/star-rating/three.png"
-    // }
-
-
+    }
 ]
-    // console.log(angular.toJson($scope.products))
+   // see more details of items
+    $scope.furtherInfo= (product)=>{
+        let myimage = product.item.image
+        let myname = product.item.name
+        let myprice = product.item.price
+        let mymodel = product.item.model
+        let myrate = product.item.rating
+              
+        let itemImg = document.querySelector('#itemImg');
+        itemImg.src = myimage
+        
+        let itemName = document.querySelector('#itemName');
+        itemName.innerHTML = myname;
+
+        let itemModel = document.querySelector('#itemModel');
+        itemModel.innerHTML = mymodel;
+
+        let itemRate = document.querySelector('#itemRate');
+        itemRate.src = myrate
+
+        let itemPrice = document.querySelector('#itemPrice');
+        itemPrice.innerHTML = myprice;
+        
+    }
+
+  
+  
 }])
 
 app.controller('cntUs',['$scope',($scope)=>{
@@ -76,5 +86,14 @@ $scope.contactUs =[
 
 app.controller('myModal',['$scope',($scope)=>{
 
-    $scope.ss
+    // $scope.fName = '';
+    // $scope.lName = '';
+    // $scope.email = '';
+    // $scope.message = '';
+
+    $scope.submitForm = function(formValid){
+        if(formValid) {
+      console.log("good")
+        }
+      };
 }])

@@ -31,9 +31,10 @@
     
             <div>
                 <ul>
-                    <li><a href="">Computer Glasses</a></li>
-                    <li><a href="">Something</a></li>
+                    <li><a href="">Computer</a></li>
+                    <!-- <li><a href="">Something</a></li> -->
                     <li><a href="#contactUs">Contact Us</a></li>
+                    <li><a href="#"> <i class="fas fa-shopping-cart cartIcon"></i><span id="cartValue">0</span></a></li>
                 </ul>
             </div>
         </nav>
@@ -46,51 +47,56 @@
        
     </header>
 
-
+    <!-- modal for enquires form -->
     <div class="modal" ng-controller="myModal">
         <div class="modal-content">
-            <form action="" name="myForm">
-                <p id="close">x</p>
+            <form action="" name="myForm" ng-submit="submitForm(myForm.$valid)" novalidate>
+                <p id="close"><i class="fas fa-times"></i></p>
                 <p class="top">Send Equiry</p>
                 <p class="writeUs">Write to us for any business enquiries</p>
 
                 <div class="firstname">
                     <label for="fName">First Name</label><br>
-                    <input type="text" name="fName" placeholder="Enter First Name" ng-model="user.fName" required>
-                    <span ng-show="myForm.fName.$error.required">Required field</span>
+                    <input type="text" name="fName" placeholder="Enter First Name" ng-model="fName" required>
+                    <span ng-show="myForm.fName.$error.required && myForm.fName.$dirty"><i class="fas fa-exclamation-circle"></i> Required field</span>
                 </div>
                 
                 <div class="lastname">
                     <label for="lName">Last Name</label><br>
-                    <input type="text" name="lName" placeholder="Enter Last Name" ng-model="user.lName"required>
-                    <span ng-show="myForm.lName.$error.required">Required field</span>
+                    <input type="text" name="lName" placeholder="Enter Last Name" ng-model="lName"required>
+                    <span ng-show="myForm.lName.$error.required && myForm.lName.$dirty"><i class="fas fa-exclamation-circle"></i> Required field</span>
                 </div>
                 
                 <div class="email">
                     <label for="email">Email</label><br>
-                    <input type="email" name="email" placeholder="Enter Email" ng-model="user.email"required>
-                    <span ng-show="myForm.email.$error.required">Required field</span>
+                    <input type="email" name="email" placeholder="Enter Email" ng-model="email" ng-pattern="/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/" required>
+                    <span ng-show="myForm.email.$error.required && myForm.email.$dirty "><i class="fas fa-exclamation-circle"></i> Required field</span>
+                    <span ng-show="myForm.email.$error.pattern "><i class="fas fa-exclamation-circle"></i> Enter a valid email</span>
                 </div>
 
                 <div class="message">
                     <label for="message">Message</label><br>
-                    <textarea name="message" id="" placeholder="Enter Message" ng-model="user.message"required></textarea>
-                    <span ng-show="myForm.message.$error.required">Required field</span>
+                    <textarea name="message" id="message" placeholder="Enter Message" ng-model="message"required>
+                    </textarea>
+                    <span ng-show="myForm.message.$error.required && myForm.message.$dirty"><i class="fas fa-exclamation-circle"></i> Required field</span>
                 </div>
     
-                    <input type="submit" value="submit">
-            
+                <div class="submit">
+                    <input type="submit" value="submit" ng-disabled="myForm.$invalid">
+                </div>
+                  
             </form>
-                
+    
         </div>
     </div>
 
-    <section id="products" ng-controller="myCtrl">
+    <!-- section that contains the products that are for sale -->
+    <section id="products" ng-controller="productsCtrl">
         <h1 class="heading">Products</h1>
         <ul class="ourProducts">
-            <li ng-repeat="item in products " class="eyeglass">
-                <div class="photo">
-                    <img src="{{item.image}}" alt="">
+            <li ng-repeat="item in products " class="eyeglass" >
+                <div class="photo" ng-click="furtherInfo(this)">
+                    <img src="{{item.image}}" alt="" >
                 </div>
                 <p>{{item.name}}</p>
                 <p>({{item.model}})</p>
@@ -100,27 +106,29 @@
                 </div>
 
                 <span><p>{{item.price | currency :'₹'}}</p></span>
+                <!-- <button>Add to cart</button> -->
             </li>
         </ul>
     </section>
 
     <!-- <section class="aboutUs" id="aboutUs">
-        <h1 class="heading">About Us</h1>
+        <div class="headAbout">
+            <h1 class="heading">About Us</h1>
+        </div>
+   
 
         <div  class="about">
-            <div>
                 <p>Titan Eyeplus, the third major line of consumer business division from Titan Company Limited, ventured into the eyewear category in March 2007. The move was an initiative to redefine the industry and straddle the marketplace with exacting quality standards, unparalleled in India’s prescription eyewear industry. Benchmarked against the best in the world, Titan Eyeplus heralds standardization in the eyewear industry.</p>
             </div>
             
-            <div>
-    
+            <div class="aboutImg">
+                <img src="images/aboutImage.jpg" alt="">
             </div>
-        </div>
         
-    </section> -->
+    </section>
+ -->
 
-
-    <section id="contactUs" ng-controller="cntUs">
+    <!-- <section id="contactUs" ng-controller="cntUs">
         
         <div class="head"><h1 class="heading">Contact Us</h1></div>
 
@@ -138,12 +146,24 @@
                 <button class="submit">Submit</button>
             </div>
 
-    </section>
+    </section> -->
+
+    <!-- icon that brings the page to the top -->
+    <div class="seemoreItems">
+        <img src="" alt="" id="itemImg">
+        <p id="itemName"></p>
+        <p id="itemModel"></p>
+        <img src="" alt="" id="itemRate">
+        <p id="itemPrice"></p>
+    </div>
 
     <div class="toTop">
         <a href="#start"><i class="fas fa-chevron-up"></i></a>
     </div>
 </div>
+
+
+
 <script>
     // on scroll behaviour of navigation bar
     window.addEventListener('scroll', ()=>{
@@ -165,8 +185,7 @@
     })
    
 
-
-    // modal fuctionality
+    // modal form fuctionality
     let modal = document.querySelector('.modal');
     let close = document.getElementById('close');
     let enquireBtn = document.getElementById('enquireBtn');
@@ -184,6 +203,12 @@
             modal.style.display = "none"
         }
     })
+
+ 
+ 
+
+  
+   
 
 </script>
 

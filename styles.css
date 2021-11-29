@@ -6,7 +6,7 @@
 }
 
 html{
-    scroll-padding-top: 90px;
+    scroll-padding-top: 82px;
 }
 
 body{
@@ -52,6 +52,20 @@ header nav ul li a{
 header nav ul li a:hover{
     color: rgb(59, 59, 59);
 }
+
+#cartValue{
+    font-size:10px;
+    background: red;
+    border-radius:50%;
+    padding:2px 5px;
+    left:-8px;
+    top:-14px;
+    color: white;
+    position: relative;
+    font-weight: bold;
+}
+
+
 
 /* header banner welcome quote */
 header .welcome{
@@ -101,15 +115,18 @@ header .welcome button{
    display: grid;
    grid-template-columns: repeat(3,1fr);
    list-style: none;
-   /* grid-gap: 2px; */
+   /* grid-gap: 20px; */
    margin: 0 50px;
 }
 
+.eyeglass{
+    /* border: 1px solid; */
+}
 /* images of products container */
 .ourProducts .photo{
     width: 389px;
     height: 219px;
-    
+    margin:14px 30px;    
 }
 
 /* images of products */
@@ -125,10 +142,11 @@ header .welcome button{
  
 } */
 
-.ourProducts .eyeglass:hover{
+.ourProducts .photo:hover{
     transform: scale(1.1);
     box-shadow:  0 4px 8px 0px  rgba(0, 0, 0, 0.096);
-    transition: 0.5s;
+    transition: 0.8s;
+    cursor: pointer;
 }
 
 /* name and model of products */
@@ -159,17 +177,45 @@ header .welcome button{
     text-align: center;
 }
 
-/* about us section design */
-.aboutUs{
-    margin-top: 80px;
+.ourProducts button{
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+    color: white;
+    background-color: green;
+    border: none;
+    padding: 8px 12px;
 }
 
-.aboutUs .about{
-    display: flex;
-}
+/* about us section design */
 
 .aboutUs p{
     font-size: 18px;
+}
+
+#aboutUs{
+    display: grid;
+    grid-template-columns: repeat(2,1rf);
+    margin: 0 40px;
+    align-items: center;
+    justify-items: center;
+}
+
+#aboutUs .headAbout{
+    grid-column: 1/2;
+    grid-row: 1/2;
+    /* margin: 20px; */
+}
+
+#aboutUs .about{
+    grid-column: 1/2;
+    grid-row: 2/3;
+    margin-left: 90px;
+}
+
+#aboutUs .aboutImg{
+    grid-column: 2/3;
+    grid-row: 2/3;
 }
 
 
@@ -208,13 +254,12 @@ header .welcome button{
     border: 1px solid #ccc;
     margin: 10px;
     width: 100%;
+    font-family: 'Questrial', sans-serif;
 }
 
 .yourInfo textarea::placeholder , .yourInfo input::placeholder{
     text-transform: uppercase;
     color: #ccc;
-    font-family: inherit;
-    
 }
 
 .yourInfo .submit{
@@ -249,14 +294,13 @@ header .welcome button{
 
 .modal .modal-content{
     background-color: white;
-    height: 85%;
+    height: 82%;
     width: 300px;
     margin: 0 auto;
     animation-name: animatetop;
     animation-duration: 0.6s;
     position: relative;
     border-radius: 10px;
-   
 }
 
 .modal .modal-content #close{
@@ -265,8 +309,17 @@ header .welcome button{
     right: 10px;
     cursor: pointer;
     font-size: 24px;
-    color: rgb(83, 83, 83);
 }
+
+.modal .modal-content #close i{
+    color: rgb(138, 138, 138);
+}
+
+.modal .modal-content #close i:hover{
+    color: rgb(0, 0, 0);
+}
+
+
 
 .modal .modal-content p{
     text-align: center;
@@ -298,10 +351,11 @@ header .welcome button{
 }
 
 .modal .modal-content textarea{
-    width: 93%;
-    height:60px ;
+    width: 94%;
+    height:80px ;
     border-radius: 8px;
     border: 1px solid #d6d6d6;
+    margin: 8px 8px 0px 8px;
 }
 
 .modal .modal-content input:focus, .modal-content textarea:focus{
@@ -316,29 +370,31 @@ header .welcome button{
     bottom: -6px;
 }
 
-.modal .modal-content input.ng-invalid ,.modal .modal-content textarea.ng-invalid{
+.modal .modal-content input.ng-invalid.ng-dirty ,.modal .modal-content textarea.ng-invalid.ng-dirty{
     border-color: #e94941;
+}
+
+.modal .modal-content input.ng-valid.ng-dirty ,.modal .modal-content textarea.ng-valid.ng-dirty{
+    border-color: rgb(62, 181,196 );
 }
 
 
 .modal .modal-content  input[type="submit"]{
     color: #fff;
-    outline-color: transparent;
     border-radius: 20px;
     border: none;
     background-color:  rgb(62, 181,196 );
+    cursor: pointer;
 }
 
 .modal .modal-content div{
     position: relative;
     padding: 12px;
-    margin: 8px;
-    
 }
 
-
-
-
+.modal input[disabled="disabled"]{
+    opacity: 0.4;
+}
 /* animation for modal to make it slide down */
 @keyframes animatetop {
     from {
@@ -352,7 +408,10 @@ header .welcome button{
   }
 
 
-
+/* see more details for poducts */
+.seemoreItems{
+    border: 1px solid;
+}
 
 
 
