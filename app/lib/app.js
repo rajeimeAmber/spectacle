@@ -86,14 +86,14 @@ $scope.contactUs =[
 
 app.controller('myModal',['$scope',($scope)=>{
 
-    // $scope.fName = '';
+    $scope.fName = '';
     // $scope.lName = '';
     // $scope.email = '';
     // $scope.message = '';
 
     $scope.submitForm = function(formValid){
         if(formValid) {
-      console.log("good")
+       alert("thanks for contacting us" + ' '+ $scope.fName)
         }
       };
 }])
